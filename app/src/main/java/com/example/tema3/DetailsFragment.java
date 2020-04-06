@@ -131,11 +131,11 @@ public class DetailsFragment extends DialogFragment {
                     calendar.set(Calendar.MINUTE, minutes);
                     calendar.set(Calendar.SECOND, 0);
                     long a = calendar.getTimeInMillis();
-
-                    alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP,
                                     calendar.getTimeInMillis(), notifyPendingIntent);
                     Toast.makeText(getActivity(), "An alarm to display notification with title: " + toDoTitle +" was created!",
                             Toast.LENGTH_SHORT).show();
+                    getActivity().onBackPressed();
                 }
             }
         });
